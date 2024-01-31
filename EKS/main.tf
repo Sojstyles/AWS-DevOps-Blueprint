@@ -107,7 +107,7 @@ resource "aws_eks_node_group" "eks_node_group" {
     min_size     = 1
   }
 
-  instance_types = ["t2.medium"]
+  instance_types = ["t2.small"]
 
   depends_on = [
     aws_iam_role.eks_node_group,
