@@ -42,12 +42,15 @@ module "eks" {
 
   eks_managed_node_groups = {
     nodes = {
-      min_size     = 2
+      min_size     = 1
       max_size     = 3
       desired_size = 1
 
       instance_type = ["t2.medium"]
+      capacity_type = "SPOT"
+      ssh_key_name  = "main"
     }
+
   }
 
   tags = {
