@@ -10,7 +10,7 @@ variable "vpc_cidr" {
 
 variable "vpc_name" {
   type        = string
-  description = "DevOps Project 1 VPC 1"
+  description = "DevOps Project j-VPC"
 }
 
 variable "cidr_public_subnet" {
@@ -23,7 +23,7 @@ variable "cidr_private_subnet" {
   description = "Private Subnet CIDR values"
 }
 
-variable "eu_availability_zone" {
+variable "us_availability_zone" {
   type        = list(string)
   description = "Availability Zones"
 }
