@@ -66,3 +66,13 @@ module "aws_ceritification_manager" {
   domain_name    = "jenkins.techstellar.link"
   hosted_zone_id = module.hosted_zone.hosted_zone_id
 }
+
+
+module "eks" {
+  source = "./EKS/main.tf" # Adjust the path accordingly
+
+  # Pass VPC and subnet information from folder1 to folder2
+  vpc_id     = module.vpc.vpc_id
+  subnet_ids = module.public_subnets.subnet_ids
+  # ... other variables
+}

@@ -1,4 +1,4 @@
-module "vpc" {
+/*module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
   name = "eks-vpc"
@@ -29,6 +29,7 @@ module "vpc" {
   }
 
 }
+*/
 
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
@@ -39,7 +40,7 @@ module "eks" {
   cluster_endpoint_public_access = true
 
   vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.public_subnets
+  subnet_ids = module.public_subnets.subnet_ids
 
   eks_managed_node_groups = {
     nodes = {
@@ -49,7 +50,13 @@ module "eks" {
 
       instance_type = ["t2.medium"]
       capacity_type = "SPOT"
-      ssh_key_name  = "main"
+      key_name      = "main"
+
+      tags = {
+        Name        = "my-eks-node" # Customize this as needed
+        Environment = "dev"
+        Terraform   = "true"
+      }
     }
 
   }
@@ -58,4 +65,5 @@ module "eks" {
     Environment = "dev"
     Terraform   = "true"
   }
+
 }

@@ -45,3 +45,13 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 sudo apt-get install unzip -y
 unzip awscliv2.zip
 sudo ./aws/install
+
+# Installing eksctl
+#! /bin/bash
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl version
+
+# Intalling Helm
+#! /bin/bash
+sudo snap install helm --classic
